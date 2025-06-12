@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 
 USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%S)
@@ -43,7 +43,7 @@ VALIDATE $? "Starting MySQL Server"
 # VALIDATE $? "Setting up root password"
 
 #Below code will be useful for idempotent nature
-mysql -h  172.31.89.237  -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
+mysql -h db.cloudwithaadarsh.site -uroot -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
